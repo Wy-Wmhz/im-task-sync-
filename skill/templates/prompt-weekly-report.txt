@@ -1,0 +1,37 @@
+帮{{USER_NAME}}生成本周工作周报草稿。
+
+第一步——拉取本周（周一到今天）以下会话的聊天记录：
+
+【群聊】用 dws chat message list --group <openConversationId> 拉取：
+{{GROUP_LIST}}
+
+【单聊】用 dws chat message list --open-dingtalk-id <openDingTalkId> 拉取：
+{{CONTACT_LIST}}
+
+第二步——从消息中提取本周完成的工作，按时间顺序整理。
+
+第三步——生成周报草稿，格式如下（简洁要点式）：
+
+## 本周完成
+- 要点1（具体完成的任务）
+- 要点2
+- 要点3
+...
+
+## 下周计划
+- 计划1
+- 计划2
+...
+
+## 问题与风险
+- 如有问题或风险列出，没有则写"暂无"
+
+第四步——先在对话窗口展示草稿，等{{USER_NAME}}确认或修改后再通过钉钉日志系统提交。
+
+执行规则：
+- 周报格式：简洁要点式（本周完成 + 下周计划 + 问题与风险）
+- 不加配图
+- 先发草稿给用户确认，用户确认后才能提交
+- 遇到周六周日的任务，需提前到周五执行
+- dws工具调用：D:/nodejs/node.exe "C:/Users/Administrator/.workbuddy/binaries/node/cli-connector-packages/node_modules/dingtalk-workspace-cli/bin/dws.js"
+{{BRAND_PATH_LINE}}
