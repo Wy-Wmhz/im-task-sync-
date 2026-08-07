@@ -1,0 +1,6 @@
+{
+  "display_name": "IM任务同步台部署",
+  "display_name_en": "IM Task Sync Deploy",
+  "description_zh": "一键部署通用职场IM任务同步台（Electron桌面应用+钉钉/飞书自动同步+周报自动化）",
+  "description_en": "Deploy universal IM task sync desktop app with DingTalk/Feishu sync and weekly report automation"
+}
