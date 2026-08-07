@@ -1,0 +1,30 @@
+{
+  "appUrl": "{{APP_URL}}",
+  "windowTitle": "{{WINDOW_TITLE}}",
+  "tasksFile": "{{TASKS_FILE}}",
+  "selfName": "{{SELF_NAME}}",
+  "hoursBack": 2,
+  "connectors": {
+    "dingtalk": {
+      "enabled": {{DINGTALK_ENABLED}},
+      "nodePath": "{{NODE_PATH}}",
+      "dwsPath": "{{DWS_PATH}}",
+      "groups": {{DINGTALK_GROUPS}},
+      "contacts": {{DINGTALK_CONTACTS}},
+      "limit": 50
+    },
+    "feishu": {
+      "enabled": {{FEISHU_ENABLED}},
+      "appId": "{{FEISHU_APP_ID}}",
+      "appSecret": "{{FEISHU_APP_SECRET}}",
+      "chats": {{FEISHU_CHATS}},
+      "limit": 50
+    },
+    "wecom": {
+      "enabled": false
+    }
+  },
+  "extractor": {
+    "keywords": {{EXTRACTOR_KEYWORDS}}
+  }
+}
