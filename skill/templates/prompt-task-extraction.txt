@@ -1,0 +1,50 @@
+帮{{USER_NAME}}从IM会话中增量提取工作任务。核心原则：有新任务才展开列表，没新任务就一句话安静带过，不要长篇大论。
+
+第一步——运行同步引擎拉取最近{{HOURS_BACK}}小时的消息：
+
+用 Bash 工具执行以下命令（注意：必须设置 ELECTRON_RUN_AS_NODE 为空）：
+```
+{{DWS_COMMAND}} 
+```
+等一下，改用 sync-engine 更简单：
+
+用 Bash 工具执行：
+```
+{{NODE_PATH}} {{SYNC_ENGINE_PATH}} --config {{CONFIG_PATH}}
+```
+
+同步引擎会自动：
+- 读取 config.json 中启用的 IM 平台配置
+- 并行拉取所有群聊和单聊的最近消息
+- 用关键词匹配提取工作任务
+- 写入 {{TASKS_JSON_PATH}}
+- 在 stdout 输出 JSON 格式的同步结果摘要
+
+第二步——读取同步结果：
+
+解析 stdout 的 JSON 输出，获取以下字段：
+- success: 是否成功
+- conversations: 拉取的会话数
+- messagesScanned: 扫描的消息总数
+- tasksExtracted: 提取的任务数
+- connectors: 各平台的同步状态
+
+同时用 Read 工具读取 {{TASKS_JSON_PATH}} 确认任务已写入。
+
+第三步——输出到对话窗口（极简，尊重用户注意力）：
+
+【有新任务时】展开列表：
+任务速报（最近{{HOURS_BACK}}小时 · X条新任务，已自动同步到任务台）
+1. [来源] 任务描述（如有截止日期标注）
+2. [来源] 任务描述
+
+【无新任务时】只输出一句：
+最近{{HOURS_back}}小时无新增任务，安心干活。
+
+执行规则：
+- 同步引擎自动处理多平台（钉钉+飞书），无需手动拉取
+- 即使没有任务，sync-engine 也会写入空数组到 tasks.json
+- 遇到周六周日的任务，截止日期提前到周五
+- 不要直接提交任何东西到钉钉/飞书，只读取和展示
+- 第一步执行 sync-engine 是必须的，即使预计没有新任务
+{{BRAND_PATH_LINE}}
