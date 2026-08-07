@@ -1,0 +1,27 @@
+{
+  "name": "im-task-sync",
+  "version": "2.1.0",
+  "description": "Universal IM task sync desktop app - extract tasks from DingTalk/Feishu chat messages",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "sync": "node sync-engine.js",
+    "test": "node scripts/test-sync.js"
+  },
+  "devDependencies": {
+    "electron": "^43.3.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wy-Wmhz/im-task-sync"
+  },
+  "keywords": [
+    "electron",
+    "dingtalk",
+    "feishu",
+    "task-management",
+    "im-sync",
+    "workplace"
+  ]
+}
