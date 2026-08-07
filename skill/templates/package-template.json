@@ -1,0 +1,14 @@
+{
+  "name": "im-task-sync",
+  "version": "2.1.0",
+  "description": "Universal IM task sync desktop app",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "sync": "node sync-engine.js"
+  },
+  "devDependencies": {
+    "electron": "^43.3.0"
+  },
+  "license": "MIT"
+}
